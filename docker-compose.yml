@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  bluesky-crypto-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bluesky-crypto-agent
+    restart: unless-stopped
+    environment:
+      # API Configuration
+      - PERPLEXITY_API_KEY=${PERPLEXITY_API_KEY}
+      - BLUESKY_USERNAME=${BLUESKY_USERNAME}
+      - BLUESKY_PASSWORD=${BLUESKY_PASSWORD}
+      
+      # Agent Configuration
+      - POSTING_INTERVAL_MINUTES=${POSTING_INTERVAL_MINUTES:-30}
+      - MAX_EXECUTION_TIME_MINUTES=${MAX_EXECUTION_TIME_MINUTES:-25}
+      - MAX_POST_LENGTH=${MAX_POST_LENGTH:-300}
+      - MIN_ENGAGEMENT_SCORE=${MIN_ENGAGEMENT_SCORE:-0.7}
+      - DUPLICATE_THRESHOLD=${DUPLICATE_THRESHOLD:-0.8}
+      - MAX_RETRIES=${MAX_RETRIES:-3}
+      
+      # Content Configuration
+      - CONTENT_THEMES=${CONTENT_THEMES:-Bitcoin,Ethereum,DeFi,NFT,Altcoins}
+      
+      # Logging Configuration
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - LOG_FORMAT=${LOG_FORMAT:-json}
+    
+    volumes:
+      # Persistent logs
+      - ./logs:/app/logs
+      # Configuration files
+      - ./config:/app/config
+      # Environment file
+      - ./.env:/app/.env:ro
+    
+    networks:
+      - bluesky-network
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  bluesky-network:
+    driver: bridge
+
+volumes:
+  logs:
+    driver: local
+  config:
+    driver: local

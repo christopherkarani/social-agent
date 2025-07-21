@@ -1,0 +1,156 @@
+{
+  "validation_summary": {
+    "overall_success": false,
+    "start_time": "2025-07-19T07:20:09.987087",
+    "end_time": "2025-07-19T07:20:29.133430",
+    "duration_seconds": 19.146343,
+    "total_checks": 8
+  },
+  "detailed_results": {
+    "project_structure": {
+      "files": {
+        "src/agents/bluesky_crypto_agent.py": {
+          "exists": true,
+          "size": 38848
+        },
+        "src/config/agent_config.py": {
+          "exists": true,
+          "size": 5441
+        },
+        "src/models/data_models.py": {
+          "exists": true,
+          "size": 5185
+        },
+        "src/services/scheduler_service.py": {
+          "exists": true,
+          "size": 9542
+        },
+        "src/services/content_filter.py": {
+          "exists": true,
+          "size": 14254
+        },
+        "src/tools/news_retrieval_tool.py": {
+          "exists": true,
+          "size": 17242
+        },
+        "src/tools/content_generation_tool.py": {
+          "exists": true,
+          "size": 27549
+        },
+        "src/tools/bluesky_social_tool.py": {
+          "exists": true,
+          "size": 8314
+        },
+        "Dockerfile": {
+          "exists": true,
+          "size": 1112
+        },
+        "docker-compose.yml": {
+          "exists": true,
+          "size": 1655
+        },
+        "docker-entrypoint.sh": {
+          "exists": true,
+          "size": 1174
+        },
+        "requirements.txt": {
+          "exists": true,
+          "size": 414
+        },
+        ".env.example": {
+          "exists": true,
+          "size": 769
+        }
+      },
+      "directories": {
+        "src/agents": {
+          "exists": true,
+          "file_count": 4
+        },
+        "src/config": {
+          "exists": true,
+          "file_count": 4
+        },
+        "src/models": {
+          "exists": true,
+          "file_count": 3
+        },
+        "src/services": {
+          "exists": true,
+          "file_count": 8
+        },
+        "src/tools": {
+          "exists": true,
+          "file_count": 6
+        },
+        "src/utils": {
+          "exists": true,
+          "file_count": 9
+        },
+        "tests": {
+          "exists": true,
+          "file_count": 31
+        },
+        "logs": {
+          "exists": true,
+          "file_count": 0
+        }
+      },
+      "success": true
+    },
+    "configuration": {
+      "env_example_valid": true,
+      "config_loading": true,
+      "validation": true,
+      "success": true
+    },
+    "docker_setup": {
+      "dockerfile_valid": true,
+      "compose_valid": true,
+      "entrypoint_valid": true,
+      "docker_available": true,
+      "build_test": false,
+      "success": false
+    },
+    "component_integration": {
+      "agent_initialization": true,
+      "tool_integration": true,
+      "scheduler_integration": true,
+      "filter_integration": true,
+      "success": true
+    },
+    "error_handling": {
+      "circuit_breaker": true,
+      "error_handler": true,
+      "retry_logic": true,
+      "graceful_degradation": true,
+      "success": true
+    },
+    "monitoring": {
+      "logging_config": true,
+      "metrics_collector": true,
+      "alert_system": true,
+      "log_analyzer": true,
+      "success": true
+    },
+    "integration_tests": {
+      "unit_tests": false,
+      "integration_tests": true,
+      "final_integration": true,
+      "success": false
+    },
+    "requirements_compliance": {
+      "requirement_1": true,
+      "requirement_2": true,
+      "requirement_3": true,
+      "requirement_4": true,
+      "requirement_5": true,
+      "requirement_6": true,
+      "success": true
+    }
+  },
+  "recommendations": [
+    "Install Docker and ensure it's running for containerized deployment",
+    "Review and fix failing integration tests"
+  ]
+}
